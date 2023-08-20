@@ -149,9 +149,9 @@ parse_and_format(AceText) :-
 	drs_to_drslist:drs_to_drslist(Drs, DrsList),
 	maplist(drs_to_ascii, DrsList, DrsAsciiList),
 	maplist(writeln, DrsAsciiList),
-
-	trees_to_ascii(Syntaxtrees, SyntaxtreesAscii),
-	format('~w~n~n', [SyntaxtreesAscii]),
+	% TODO: The following two lines are bugged in SWI >9.0.4
+	% trees_to_ascii(Syntaxtrees, SyntaxtreesAscii),
+	% format('~w~n~n', [SyntaxtreesAscii]),
 	(
 		is_wellformed(Drs)
 	->
@@ -187,4 +187,4 @@ make_ape :-
 
 
 % Note: we load the interface at startup
-:- ape.
+:- initialization(ape, restore_state).
