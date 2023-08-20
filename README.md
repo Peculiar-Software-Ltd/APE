@@ -1,35 +1,41 @@
-APE - ACE Parsing Engine
-========================
+# APE - ACE Parsing Engine
 
 Authors: Kaarel Kaljurand, Norbert E. Fuchs, Tobias Kuhn
 
-
-Introduction
-------------
+## Introduction
 
 This document explains how APE (ACE Parsing Engine) is compiled and used.
 
 In order to compile and run APE, you first need to install a recent version of SWI-Prolog.
-SWI-Prolog is free software and can be downloaded from <http://www.swi-prolog.org>. Note that you
-minimally need to install the following SWI Prolog packages: `clib`, `sgml`, and `http`. To view
+SWI-Prolog is free software and can be downloaded from <http://www.swi-prolog.org>.
+You will also need [Meson](https://mesonbuild.com) version 1.1.0 or higher to create reproducible builds.
+
+Note that you
+minimally need to install the following SWI Prolog packages:
+
+* `clib`
+* `sgml`
+* `http`
+
+To view
 the documentation embedded in the source files you also need `pldoc`.
 
-
-Compilation
------------
+## Compilation
 
 Before you can run APE, you have to compile the APE source code. Just execute the file
-`make_exe.bat` in the case of Windows or `make install` in the case of Mac OS X, Linux, or any other
-Unix system. Both the bat-file and the Makefile are located in the root directory of the APE distribution. As a result (and
+`build.cmd` in the case of Windows or `sh build.cmd` in the case of Mac OS X, Linux, or any other
+Unix system.
+
+Both the bat-file and the shell script are located inside the `build.cmd` file at the root directory of the APE distribution.
+
+As a result (and
 given that there were no compilation errors), a new file `ape.exe` is created in the current
 directory.
 
 (In some unlikely cases you might have to change the size of the memory areas
 used by SWI-Prolog. This is documented at <http://www.swi-prolog.org/pldoc/man?section=memlimit>.)
 
-
-Execution
----------
+## Execution
 
 APE has to be executed from the command-line. In the command-line terminal, go to the root
 directory of APE (where `ape.exe` is located). Then type `ape.exe` in the case of Windows or
@@ -87,13 +93,12 @@ directory of APE (where `ape.exe` is located). Then type `ape.exe` in the case o
 
 APE can be used via four different interfaces:
 
-- command-line interface
-- socket interface
-- HTTP interface (webservice)
-- directly from Prolog or Java
+* command-line interface
+* socket interface
+* HTTP interface (webservice)
+* directly from Prolog or Java
 
 All these possibilities are described in the following sections.
-
 
 ### Command-line interface to APE
 
@@ -121,7 +126,6 @@ then the terminal waits for an input. In this case, you can type your ACE text i
 window. Once you have done so, press `Enter` and `Ctrl-D` to tell the terminal that you are
 finished. The output (the pretty printed DRS in our case) is then shown below the ACE text you just
 entered. Again, this does not work under Windows.
-
 
 ### Socket interface to APE
 
@@ -163,7 +167,6 @@ Session example, assuming that the APE socket server listens at port 3453:
     APESERVERSTREAMEND
     Connection closed by foreign host.
 
-
 ### HTTP interface to APE
 
 An HTTP interface to APE is started by giving the argument `-httpserver` to APE. The default port,
@@ -191,7 +194,7 @@ You can test the server by loading the following URL in your browser.
 The result should be an HTML-rendering of the DRS of the sentence "Every man is a human.".
 
 The complete description of this webservice interface as well as some example clients are available
-at http://attempto.ifi.uzh.ch/site/docs/ape_webservice.html. (Note though that the parameter
+at <http://attempto.ifi.uzh.ch/site/docs/ape_webservice.html>. (Note though that the parameter
 `ulexreload` is not supported by this HTTP interface.)
 
 Note that the parameter names and values, and their meaning is the same as for the command-line
@@ -200,11 +203,9 @@ webservice cannot access local files, i.e. the input ACE text can be passed as a
 pointer an HTTP resource (i.e. URL) but not via pointing to a local file (such as
 `/var/acetexts/sometext.ace.txt`).
 
-
 ### Using APE from Java programs
 
 See the documentation in [java/](java/).
-
 
 ### Some examples
 
@@ -241,18 +242,16 @@ context of `ape.exe`. For example, the following command displays the source cod
 
     swipl -x ./ape.exe -g listing
 
-
-Code
-----
+## Code
 
 The distribution includes the following packages containing the main code in Prolog
 (in the prolog-directory):
 
-- `logger/`  contains the error logger module
-- `lexicon/` contains various lexicon files, notably a content words lexicon with ~2,000 entries
-- `utils/`   contains various modules, mostly for translating the Discourse Representation
+* `logger/`  contains the error logger module
+* `lexicon/` contains various lexicon files, notably a content words lexicon with ~2,000 entries
+* `utils/`   contains various modules, mostly for translating the Discourse Representation
              Structure (DRS) generated by APE into other logical forms
-- `parser/`  contains the Attempto Parsing Engine (APE) (tokenizer, grammar files, anaphoric
+* `parser/`  contains the Attempto Parsing Engine (APE) (tokenizer, grammar files, anaphoric
              reference resolver)
 
 This listing reflects the dependencies: `logger` depends on no other package. `lexicon` only
@@ -267,18 +266,16 @@ by:
 
 Apart from these main packages, there are some additional folders:
 
-- `examples/` contains some Prolog examples of how to programmatically access APE
-- `java/`     contains the code of the Java binding for APE
-- `tests/`    contains various tests
-- `tools/`    contains some auxiliary scripts
+* `examples/` contains some Prolog examples of how to programmatically access APE
+* `java/`     contains the code of the Java binding for APE
+* `tests/`    contains various tests
+* `tools/`    contains some auxiliary scripts
 
 For more information consult the commented source files.
 
-
-Mailing List
-------------
+## Mailing List
 
 If you encounter problems, you can get help from the Attempto community. Visit the Attempto Mailing
 List site:
 
-  http://attempto.ifi.uzh.ch/site/mailinglist/
+  <http://attempto.ifi.uzh.ch/site/mailinglist/>
