@@ -8,7 +8,8 @@ This document explains how APE (ACE Parsing Engine) is compiled and used.
 
 In order to compile and run APE, you first need to install a recent version of SWI-Prolog.
 SWI-Prolog is free software and can be downloaded from <http://www.swi-prolog.org>.
-You will also need [Meson](https://mesonbuild.com) version 1.1.0 or higher to create reproducible builds.
+
+You will also need [Meson](https://mesonbuild.com) version 1.1.0 or higher for the reproducible build.
 
 Note that you
 minimally need to install the following SWI Prolog packages:
