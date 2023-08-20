@@ -2,6 +2,10 @@
 
 Authors: Kaarel Kaljurand, Norbert E. Fuchs, Tobias Kuhn
 
+## Reproducible Build with Meson
+
+Author: Eden Rose(Ross J. Duff MSc)
+
 ## Introduction
 
 This document explains how APE (ACE Parsing Engine) is compiled and used.
