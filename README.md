@@ -27,15 +27,24 @@ the documentation embedded in the source files you also need `pldoc`.
 
 ## Compilation
 
-Before you can run APE, you have to compile the APE source code. Just execute the file
-`build.cmd` in the case of Windows or `sh build.cmd` in the case of Mac OS X, Linux, or any other
-Unix system.
+Before you can run APE, you have to compile the APE source code. 
+From the APE source directory:
 
-Both the bat-file and the shell script are located inside the `build.cmd` file at the root directory of the APE distribution.
+```sh
+meson setup build && meson compile -C build
+```
 
 As a result (and
-given that there were no compilation errors), a new file `ape.exe` is created in the current
+given that there were no compilation errors), a new file `ape.exe` is created in the build
 directory.
+
+### Installation
+
+From the source directory:
+
+```sh
+meson install -C build
+```
 
 (In some unlikely cases you might have to change the size of the memory areas
 used by SWI-Prolog. This is documented at <http://www.swi-prolog.org/pldoc/man?section=memlimit>.)
